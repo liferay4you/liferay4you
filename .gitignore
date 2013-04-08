@@ -1,0 +1,15 @@
+.project
+.classpath
+/.settings
+
+/web/.project
+/web/.classpath
+/web/.settings
+
+/data/.project
+/data/.classpath
+/data/.settings
+
+/web/target
+
+/data/target

@@ -93,7 +93,7 @@
 				
 			</exclusions>
 		</dependency>
-		<!-- Apache Common 2.6 -->
+		<!-- Apache Common 2 -->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
@@ -107,6 +107,13 @@
 			<version>1.1.1</version>
 		</dependency>
 
+		<!-- Apache Common Collections 3 -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+            
 		<!-- Servlet 3 API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

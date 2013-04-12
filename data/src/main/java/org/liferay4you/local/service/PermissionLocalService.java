@@ -1,5 +1,7 @@
 package org.liferay4you.local.service;
 
+import java.util.List;
+
 import org.liferay4you.model.Permission;
 import org.liferay4you.model.id.PermissionId;
 
@@ -22,5 +24,21 @@ public interface PermissionLocalService {
 	 * @return
 	 */
 	public Permission findById(PermissionId id);
+	
+	/**
+	 * Finds by action and type
+	 * @param action
+	 * @param type
+	 * @return
+	 */
+	public List<Permission> findByActionAndType(String action, int type);
+	
+	/**
+	 * Finds by action and type
+	 * @param action
+	 * @param type
+	 * @return
+	 */
+	public List<Permission> findByType(int type);
 	
 }

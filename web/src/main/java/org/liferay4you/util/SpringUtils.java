@@ -23,7 +23,7 @@ public class SpringUtils {
 	 * @param viewObject
 	 * @return
 	 */
-	public static ModelAndView createMv(String jspPath, String viewName, String viewObject) {
+	public static ModelAndView createMv(String jspPath, String viewName, Object viewObject) {
 		return new ModelAndView(jspPath, viewName, viewObject);
 	}
 

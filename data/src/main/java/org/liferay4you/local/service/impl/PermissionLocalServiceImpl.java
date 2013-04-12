@@ -1,5 +1,7 @@
 package org.liferay4you.local.service.impl;
 
+import java.util.List;
+
 import org.liferay4you.local.service.PermissionLocalService;
 import org.liferay4you.model.Permission;
 import org.liferay4you.model.id.PermissionId;
@@ -25,11 +27,22 @@ public class PermissionLocalServiceImpl implements PermissionLocalService{
 		return prePermissionRepository.findOne(id);
 	}
 	
+	@Override
+	public List<Permission> findByActionAndType(String action, int type) {
+		return prePermissionRepository.findByActionAndTypeLike(action, type);
+	}
+	
+	@Override
+	public List<Permission> findByType(int type) {
+		return prePermissionRepository.findByType(type);
+	}
+
+	
 	/* *******************************
 	 ******** Repositories ***********
 	 ****************************** */
 	
-	PermissionRepository prePermissionRepository;
+	private PermissionRepository prePermissionRepository;
 	
 	/* *******************************
 	 ********* Constructor ***********
@@ -39,5 +52,6 @@ public class PermissionLocalServiceImpl implements PermissionLocalService{
 	public PermissionLocalServiceImpl(PermissionRepository prePermissionRepository) {
 		this.prePermissionRepository = prePermissionRepository;
 	}
+
 	
 }

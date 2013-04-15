@@ -2,8 +2,7 @@ package org.liferay4you.helper;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.liferay4you.form.CreateAccountForm;
 import org.liferay4you.form.LoginForm;
 import org.liferay4you.local.service.UserLocalService;
@@ -17,7 +16,7 @@ import org.liferay4you.view.LoginView;
 
 public class CredentialsControllerHelper {
 
-	private static Log log = LogFactory.getLog(CredentialsControllerHelper.class);
+	private static Logger log = Logger.getLogger(CredentialsControllerHelper.class);
 	
 	/* *******************************
 	 ******** Public Methods *********

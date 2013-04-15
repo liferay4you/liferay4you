@@ -4,8 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -14,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class SpringUtils {
 
-	private static Log log = LogFactory.getLog(SpringUtils.class);
+	private static Logger log = Logger.getLogger(SpringUtils.class);
 	
 	/**
 	 * Model and Vie factory

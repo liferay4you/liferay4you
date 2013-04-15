@@ -3,8 +3,7 @@ package org.liferay4you.local.service.impl;
 import java.util.List;
 
 import org.apache.commons.collections.IteratorUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.liferay4you.local.service.UserLocalService;
 import org.liferay4you.model.User;
 import org.liferay4you.repository.UserRepository;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
 @SuppressWarnings("unchecked")
 public class UserLocalServiceImpl implements UserLocalService {
 	
-	Log log = LogFactory.getLog(getClass());
+	Logger log = Logger.getLogger(UserLocalServiceImpl.class);
 	
 	/* *******************************
 	 ******* Implementation **********

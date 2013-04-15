@@ -23,12 +23,22 @@
 		<param-value>classpath:META-INF/application-context.xml</param-value>
 	</context-param> 
 
+	<!-- Spring Log4j -->
+	<context-param>
+	    <param-name>log4jConfigLocation</param-name>
+	    <param-value>/WEB-INF/log4j.xml</param-value>
+	</context-param>
+
 	<!-- Context initialization -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-
+	<!-- Log4j Listener, Srping -->
+	<listener>
+	    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	
 	<!-- HTTP: 404 -->
 	<error-page>
 		<error-code>404</error-code>

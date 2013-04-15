@@ -3,8 +3,7 @@ package org.liferay4you.parent;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,7 +15,7 @@ import com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource;
 @ContextConfiguration(locations = "classpath:META-INF/application-context.xml")
 public abstract class DatabaseConectionTest {
 	
-	private static Log log = LogFactory.getLog(DatabaseConectionTest.class);
+	private static Logger log = Logger.getLogger(DatabaseConectionTest.class);
 	
 	@BeforeClass
 	public static void setUp() {

@@ -28,6 +28,9 @@ public class User {
 
 	@Column(name = "USER_PSSW", length = 60)
 	private String password;
+
+	@Column(name = "IS_ADMIN")
+	private boolean admin;
 	
 	/* *******************************
 	 ****** Setters & Getters ********
@@ -45,6 +48,9 @@ public class User {
 	public String getPassword() { return password; }
 	public void setPassword(String password) { this.password = password; }
 	
+	public boolean isAdmin() { return admin; }
+	public void setAdmin(boolean admin) { this.admin = admin; }
+	
 	/* *******************************
 	 ************ toString() *********
 	 ******************************* */
@@ -57,6 +63,7 @@ public class User {
 		sb.append("userId: " + userId + "\n");
 		sb.append("userName: " + userName + "\n");
 		sb.append("mail: " + mail + "\n");
+		sb.append("isAdmin: " + admin + "\n");
 		
 		return sb.toString();
 	}

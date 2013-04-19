@@ -4,13 +4,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.liferay4you.constant.PermissionConstants;
 import org.liferay4you.local.service.PermissionLocalService;
 import org.liferay4you.model.Permission;
+import org.liferay4you.model.User;
+import org.liferay4you.util.Constants;
 import org.liferay4you.util.Mappings;
 import org.liferay4you.util.SpringUtils;
 import org.liferay4you.util.StringPool;
+import org.liferay4you.util.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,13 +36,32 @@ public class SecurityInterceptor implements HandlerInterceptor{
 			List<Permission> mappingPermissions = permissionLocalService.findByType(PermissionConstants.TYPE_MAPPING);
 			
 			for (Permission permission : mappingPermissions) {
-				if (checkPattern(requestUri, permission)) {
-					// TODO
-					// En un futuro se tiene que revisar que el usuario este entre
-					// la lista de usuarios o entre los grupos con permisos
-					SpringUtils.sendError(response);
-					return false;
+				System.out.println(permission);
+				// If the patter matches and it's not public we'll have to check the security
+				if (checkPattern(requestUri, permission) && !permission.isPublic()) {
+					
+					HttpSession session = request.getSession();
+					
+					User user = (User) session.getAttribute(Constants.SESSION_USER);
+					
+					if (Validator.isNotNull(user) && !user.isAdmin()) {
+						
+						List<Long> usersAllowed = permission.getUserIdList();
+						
+						// Check if the user is allowed
+						for (Long userId : usersAllowed) {
+							if (user.getUserId() == userId) { return true; }
+						}
+						
+						SpringUtils.sendError(response);
+						return false;
+					}
+					else if (Validator.isNull(user)) {
+						return false;
+					}
+
 				}
+			
 			}
 			
 		}

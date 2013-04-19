@@ -2,8 +2,11 @@ package org.liferay4you.persistence;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.liferay4you.model.Permission;
 import org.liferay4you.model.id.PermissionId;
@@ -14,6 +17,8 @@ import org.springframework.orm.jpa.JpaSystemException;
 
 public class PermissionRepositoryTest extends DatabaseConectionTest{
 
+	Logger log = Logger.getLogger(PermissionRepositoryTest.class);
+	
 	@Autowired
 	PermissionRepository permissionRepository;
 	
@@ -35,7 +40,10 @@ public class PermissionRepositoryTest extends DatabaseConectionTest{
 		permission.setAction(actionName);
 		permission.setType(permissionType);
 		permission.setPublic(true);
+		List<Long> userIdList = new ArrayList<Long>();userIdList.add(1L);userIdList.add(2L);
+		permission.setUserIdList(userIdList);
 		
+		log.info("**** Saving the test object ****");
 		Permission newPermission = permissionRepository.save(permission);
 		
 		assertEquals(actionName, newPermission.getAction());
@@ -44,10 +52,12 @@ public class PermissionRepositoryTest extends DatabaseConectionTest{
 		
 		PermissionId permissionId = new PermissionId(actionName, permissionType);
 		newPermission = null;
+		log.info("**** Testing we can find it again ****");
 		newPermission = permissionRepository.findOne(permissionId);
 		
 		assertNotNull(newPermission);
 		
+		log.info("**** Deleting the test object ****");
 		permissionRepository.delete(newPermission);
 		
 	}
